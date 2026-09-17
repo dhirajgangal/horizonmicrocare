@@ -235,6 +235,35 @@
     justify-content: center;
 }
 
+.story-slider {
+    container-type: inline-size;
+    overflow: hidden;
+    width: 100%;
+}
+
+.story-slider-track {
+    display: flex;
+    will-change: transform;
+}
+
+.story-slider-track.is-animating {
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.story-slider-slide {
+    box-sizing: border-box;
+    flex: 0 0 100cqi;
+    width: 100cqi;
+    max-width: 100cqi;
+    min-width: 100cqi;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .story-slider-track.is-animating {
+        transition-duration: 0.01ms;
+    }
+}
+
 .public-footer-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);

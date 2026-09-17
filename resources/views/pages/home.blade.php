@@ -98,26 +98,73 @@
         </div>
     </section>
 
-    <section class="mx-auto max-w-7xl px-4 py-20 md:px-6" x-data="{ active: 0, count: {{ $stories->count() }} }">
+    @php
+        $storySlides = $stories->values();
+        $storyTrack = $storySlides->count() > 1
+            ? collect([$storySlides->last()])->concat($storySlides)->push($storySlides->first())
+            : $storySlides;
+    @endphp
+    <section
+        class="mx-auto max-w-7xl px-4 py-20 md:px-6"
+        x-data="{
+            active: {{ $storySlides->count() > 1 ? 1 : 0 }},
+            count: {{ $storySlides->count() }},
+            animating: false,
+            busy: false,
+            next() {
+                if (this.count < 2 || this.busy) { return; }
+                this.busy = true;
+                this.animating = true;
+                this.active += 1;
+            },
+            prev() {
+                if (this.count < 2 || this.busy) { return; }
+                this.busy = true;
+                this.animating = true;
+                this.active -= 1;
+            },
+            finish(event) {
+                if (event.target !== event.currentTarget) { return; }
+                this.animating = false;
+                if (this.active === 0) {
+                    this.active = this.count;
+                } else if (this.active === this.count + 1) {
+                    this.active = 1;
+                }
+                this.busy = false;
+            },
+        }"
+    >
         <div class="flex items-end justify-between gap-6">
             <x-section-heading :eyebrow="__('Client stories')" title="Voices from the community." />
             <x-button variant="secondary" :href="route('stories.index')">{{ __('View all') }}</x-button>
         </div>
-        @if ($stories->isNotEmpty())
-            <div class="relative mt-10 min-h-[22rem]">
-                @foreach ($stories as $index => $story)
-                    <article x-show="active === {{ $index }}" x-transition.opacity class="grid items-center gap-8 rounded-xl border border-border bg-surface p-6 shadow-md md:grid-cols-[18rem_1fr] md:p-10" @if ($index !== 0) x-cloak @endif>
-                        <img src="{{ $story->photoUrl() }}" alt="{{ $story->name }}" class="h-64 w-full rounded-xl object-cover">
-                        <div>
-                            <blockquote class="font-serif text-2xl text-navy">“{{ $story->feedback }}”</blockquote>
-                            <p class="mt-6 font-semibold">{{ $story->name }}</p>
-                            <p class="text-sm text-text-2">{{ $story->location }}</p>
-                        </div>
-                    </article>
-                @endforeach
-                @if ($stories->count() > 1)
-                    <x-slider-arrow direction="prev" x-on:click="active = (active - 1 + count) % count" />
-                    <x-slider-arrow direction="next" x-on:click="active = (active + 1) % count" />
+        @if ($storySlides->isNotEmpty())
+            <div class="relative mt-10">
+                <div class="story-slider">
+                    <div
+                        class="story-slider-track"
+                        :class="animating && 'is-animating'"
+                        :style="'transform: translate3d(' + (-active * 100) + 'cqi, 0, 0)'"
+                        x-on:transitionend="finish($event)"
+                    >
+                        @foreach ($storyTrack as $story)
+                            <article class="story-slider-slide">
+                                <div class="grid items-center gap-8 rounded-xl border border-border bg-surface p-6 shadow-md md:grid-cols-[18rem_1fr] md:p-10">
+                                    <img src="{{ $story->photoUrl() }}" alt="{{ $story->name }}" class="h-64 w-full rounded-xl object-cover">
+                                    <div>
+                                        <blockquote class="font-serif text-2xl leading-relaxed text-navy">“{{ $story->feedback }}”</blockquote>
+                                        <p class="mt-6 font-semibold">{{ $story->name }}</p>
+                                        <p class="text-sm text-text-2">{{ $story->location }}</p>
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+                </div>
+                @if ($storySlides->count() > 1)
+                    <x-slider-arrow direction="prev" x-on:click="prev()" />
+                    <x-slider-arrow direction="next" x-on:click="next()" />
                 @endif
             </div>
         @endif
