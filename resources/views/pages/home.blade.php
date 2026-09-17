@@ -1,4 +1,4 @@
-<x-public-layout title="Home" :lightbox="true">
+<x-public-layout :title="__('Home')" :lightbox="true">
     <section
         x-data="{
             active: 0,
@@ -36,8 +36,8 @@
                 <div class="absolute inset-0 bg-gradient-to-br from-navy via-navy to-orange/30"></div>
                 <div class="relative mx-auto flex min-h-[36rem] max-w-7xl flex-col justify-center px-4 py-20 md:min-h-[44rem] md:px-6">
                     <p class="text-xs font-semibold uppercase tracking-[0.22em] text-orange">{{ $site->tagline }}</p>
-                    <h1 class="mt-4 max-w-3xl font-serif text-5xl leading-tight text-white md:text-7xl">Livelihood support for women, shared with care.</h1>
-                    <p class="mt-5 max-w-2xl text-lg text-white/80">Explore loan types, stories from the community, and start an application. Submitting a form never guarantees a loan or approval.</p>
+                    <h1 class="mt-4 max-w-3xl font-serif text-5xl leading-tight text-white md:text-7xl">{{ __('Livelihood support for women, shared with care.') }}</h1>
+                    <p class="mt-5 max-w-2xl text-lg text-white/80">{{ __('Explore loan types, stories from the community, and start an application. Submitting a form never guarantees a loan or approval.') }}</p>
                     <div class="mt-8 flex flex-wrap gap-3">
                         <x-button :href="route('apply')">{{ __('Apply for Loan') }}</x-button>
                         <x-button variant="secondary" class="border-white text-white hover:bg-white hover:text-navy" :href="route('offerings.index')">{{ __('Our offerings') }}</x-button>
@@ -53,35 +53,60 @@
     </section>
 
     <section class="mx-auto max-w-7xl px-4 py-20 md:px-6">
-        <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
             <div>
                 <x-section-heading
                     :eyebrow="__('Women first')"
-                    title="Capital should follow courage, not the other way around."
-                    description="Horizonion Microcare Association exists so women can ask about livelihood and self-empowerment loans without being promised an outcome. We share information, collect applications, and connect people with the next conversation."
+                    :title="__('Capital should follow courage, not the other way around.')"
+                    :description="__('Horizonion Microcare Association exists so women can ask about livelihood and self-empowerment loans without being promised an outcome. We share information, collect applications, and connect people with the next conversation.')"
                 />
                 <div class="mt-8 flex flex-wrap gap-3">
                     <x-button :href="route('offerings.index')">{{ __('See offerings') }}</x-button>
                     <x-button variant="secondary" :href="route('apply')">{{ __('Apply for Loan') }}</x-button>
                 </div>
             </div>
-            <x-card class="bg-navy text-white shadow-xl">
-                <p class="text-sm font-semibold uppercase tracking-[0.18em] text-orange">{{ __('What this site does') }}</p>
-                <ul class="mt-5 space-y-3 text-white/80">
-                    <li>Explains loan types we help you enquire about</li>
-                    <li>Collects applications and contact details for follow-up</li>
-                    <li>Shares stories and community photographs</li>
-                    <li>Never guarantees a loan, interest rate, or approval</li>
-                </ul>
-            </x-card>
+            <div class="relative">
+                <div class="overflow-hidden rounded-xl border border-border shadow-md">
+                    <img
+                        src="{{ asset('storage/images/img-01.png') }}"
+                        alt="{{ __('Woman sewing as part of her livelihood work.') }}"
+                        class="h-72 w-full object-cover object-top transition duration-300 hover:scale-105 lg:h-[30rem]"
+                    >
+                </div>
+                <div class="mt-4 rounded-xl border border-navy bg-navy p-5 text-white shadow-xl lg:absolute lg:inset-x-4 lg:bottom-4 lg:mt-0">
+                    <p class="eyebrow text-sm">{{ __('What this site does') }}</p>
+                    <ul class="mt-4 space-y-2 text-sm text-white/80">
+                        <li>{{ __('Explains loan types we help you enquire about') }}</li>
+                        <li>{{ __('Collects applications and contact details for follow-up') }}</li>
+                        <li>{{ __('Shares stories and community photographs') }}</li>
+                        <li>{{ __('Never guarantees a loan, interest rate, or approval') }}</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="bg-surface py-20">
         <div class="mx-auto max-w-7xl px-4 md:px-6">
             <div class="flex items-end justify-between gap-6">
-                <x-section-heading :eyebrow="__('Our offerings')" title="Livelihood products, explained simply." />
+                <x-section-heading :eyebrow="__('Our offerings')" :title="__('Livelihood products, explained simply.')" />
                 <x-button variant="secondary" :href="route('offerings.index')">{{ __('View all') }}</x-button>
+            </div>
+            <div class="mt-10 grid gap-4 md:grid-cols-2">
+                <div class="overflow-hidden rounded-xl border border-border shadow-md">
+                    <img
+                        src="{{ asset('storage/images/img-02.png') }}"
+                        alt="{{ __('Woman pouring milk from a dairy can.') }}"
+                        class="h-64 w-full object-cover object-center transition duration-300 hover:scale-105"
+                    >
+                </div>
+                <div class="overflow-hidden rounded-xl border border-border shadow-md">
+                    <img
+                        src="{{ asset('storage/images/img-03.png') }}"
+                        alt="{{ __('Woman standing with milk cans after dairy work.') }}"
+                        class="h-64 w-full object-cover object-top transition duration-300 hover:scale-105"
+                    >
+                </div>
             </div>
             <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 @foreach ($products as $product)
@@ -136,7 +161,7 @@
         }"
     >
         <div class="flex items-end justify-between gap-6">
-            <x-section-heading :eyebrow="__('Client stories')" title="Voices from the community." />
+            <x-section-heading :eyebrow="__('Client stories')" :title="__('Voices from the community.')" />
             <x-button variant="secondary" :href="route('stories.index')">{{ __('View all') }}</x-button>
         </div>
         @if ($storySlides->isNotEmpty())
@@ -177,7 +202,7 @@
                     <img src="{{ $site->ceoPhotoUrl() }}" alt="{{ $site->ceo_name }}" class="h-72 w-full rounded-xl object-cover">
                 @endif
                 <div>
-                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-orange">{{ __('From the leadership desk') }}</p>
+                    <p class="eyebrow">{{ __('From the leadership desk') }}</p>
                     <h2 class="mt-3 font-serif text-4xl">{{ $site->ceo_name }}</h2>
                     <p class="mt-1 text-white/70">{{ $site->ceo_designation }}</p>
                     <p class="mt-6 max-w-3xl whitespace-pre-line leading-relaxed text-white/80">{{ $site->ceo_bio }}</p>
@@ -188,7 +213,7 @@
 
     <section class="mx-auto max-w-7xl px-4 py-20 md:px-6">
         <div class="flex items-end justify-between gap-6">
-            <x-section-heading :eyebrow="__('Gallery')" title="Moments from the field." />
+            <x-section-heading :eyebrow="__('Gallery')" :title="__('Moments from the field.')" />
             <x-button variant="secondary" :href="route('gallery')">{{ __('View more') }}</x-button>
         </div>
         <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -202,9 +227,9 @@
     </section>
 
     <section class="bg-surface py-20">
-        <div class="mx-auto max-w-4xl px-4 md:px-6">
+        <div class="mx-auto max-w-7xl px-4 md:px-6">
             <div class="flex items-end justify-between gap-6">
-                <x-section-heading :eyebrow="__('FAQs')" title="Questions people ask first." />
+                <x-section-heading :eyebrow="__('FAQs')" :title="__('Questions people ask first.')" />
                 <x-button variant="secondary" :href="route('faqs')">{{ __('All FAQs') }}</x-button>
             </div>
             <div class="mt-10 space-y-3" x-data="{ open: 0 }">
@@ -222,16 +247,25 @@
     </section>
 
     <section class="mx-auto max-w-7xl px-4 py-20 md:px-6">
-        <x-card class="flex flex-col items-start justify-between gap-6 bg-navy text-white shadow-xl md:flex-row md:items-center">
-            <div>
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-orange">{{ __('Ready when you are') }}</p>
-                <h2 class="mt-2 font-serif text-3xl">Start an application or send an enquiry.</h2>
-                <p class="mt-3 max-w-xl text-white/75">We will read what you send and follow up if we need more information. Nothing here is a loan offer or a guarantee of approval.</p>
+        <div class="relative overflow-hidden rounded-xl border border-navy bg-navy text-white shadow-xl">
+            <img
+                src="{{ asset('storage/images/img-02.png') }}"
+                alt=""
+                aria-hidden="true"
+                class="absolute inset-0 h-full w-full object-cover object-center opacity-30"
+            >
+            <div class="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
+            <div class="relative flex flex-col items-start justify-between gap-6 p-6 md:flex-row md:items-center md:p-8">
+                <div>
+                    <p class="eyebrow">{{ __('Ready when you are') }}</p>
+                    <h2 class="mt-2 font-serif text-3xl">{{ __('Start an application or send an enquiry.') }}</h2>
+                    <p class="mt-3 max-w-xl text-white/75">{{ __('We will read what you send and follow up if we need more information. Nothing here is a loan offer or a guarantee of approval.') }}</p>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <x-button :href="route('apply')">{{ __('Apply for Loan') }}</x-button>
+                    <x-button variant="secondary" class="border-white text-white hover:bg-white hover:text-navy" :href="route('contact')">{{ __('Contact us') }}</x-button>
+                </div>
             </div>
-            <div class="flex flex-wrap gap-3">
-                <x-button :href="route('apply')">{{ __('Apply for Loan') }}</x-button>
-                <x-button variant="secondary" class="border-white text-white hover:bg-white hover:text-navy" :href="route('contact')">{{ __('Contact us') }}</x-button>
-            </div>
-        </x-card>
+        </div>
     </section>
 </x-public-layout>

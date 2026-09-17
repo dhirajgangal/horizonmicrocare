@@ -14,6 +14,6 @@ class Show extends AdminComponent
 
     public function render(): View
     {
-        return $this->page('livewire.admin.client-stories.show', 'View story');
+        return $this->page('livewire.admin.client-stories.show', __('View story'));
     }
 }

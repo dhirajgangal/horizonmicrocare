@@ -1,6 +1,6 @@
-<nav class="mx-auto max-w-7xl px-4 py-5 md:px-6" aria-label="Breadcrumb">
+<nav class="mx-auto max-w-7xl px-4 py-5 md:px-6" aria-label="{{ __('Breadcrumb') }}">
     <ol class="flex flex-wrap items-center gap-2 text-sm text-text-2">
-        <li><a href="{{ route('home') }}" class="hover:text-orange">Home</a></li>
+        <li><a href="{{ route('home') }}" class="hover:text-orange">{{ __('Home') }}</a></li>
         @foreach ($items as $item)
             <li aria-hidden="true">/</li>
             <li>

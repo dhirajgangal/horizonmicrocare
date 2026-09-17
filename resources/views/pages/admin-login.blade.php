@@ -4,8 +4,10 @@
             <div class="absolute -right-16 top-20 h-64 w-64 rounded-full bg-orange/20 blur-3xl"></div>
             <div class="absolute -left-10 bottom-10 h-48 w-48 rounded-full bg-white/5 blur-2xl"></div>
             <div class="relative">
-                <img src="{{ asset('storage/images/logo-rectangle-white.png') }}" alt="{{ $site->organization_name }}" class="h-14 w-auto">
-                <p class="mt-10 text-xs font-semibold uppercase tracking-[0.22em] text-orange">{{ __('Staff only') }}</p>
+                <div class="inline-flex rounded-xl border border-white/20 bg-white p-3 shadow-sm">
+                    <img src="{{ asset('storage/images/logo-rectangle.png') }}" alt="{{ $site->organization_name }}" class="h-14 w-auto">
+                </div>
+                <p class="eyebrow mt-10">{{ __('Staff only') }}</p>
                 <h1 class="mt-4 max-w-md font-serif text-5xl leading-tight">{{ $site->organization_name }}</h1>
                 <p class="mt-5 max-w-sm text-lg text-white/75">{{ $site->tagline }}</p>
             </div>
@@ -15,11 +17,13 @@
         <section class="flex items-center justify-center px-4 py-12">
             <div class="w-full max-w-md">
                 <div class="mb-8 flex items-center justify-between lg:justify-end">
-                    <img src="{{ asset('storage/images/logo-square.png') }}" alt="" class="h-12 w-12 lg:hidden">
+                    <div class="inline-flex rounded-xl border border-border bg-white p-2 shadow-sm lg:hidden">
+                        <img src="{{ asset('storage/images/logo-square.png') }}" alt="{{ $site->organization_name }}" class="h-12 w-12">
+                    </div>
                     <x-language-switcher />
                 </div>
                 <x-card class="shadow-xl">
-                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-orange">{{ __('Super Admin') }}</p>
+                    <p class="eyebrow">{{ __('Super Admin') }}</p>
                     <h1 class="mt-2 font-serif text-3xl text-navy">{{ __('Sign in') }}</h1>
                     <form method="POST" action="{{ route('admin.login.store') }}" class="mt-6 space-y-4" x-data="{ show: false }">
                         @csrf

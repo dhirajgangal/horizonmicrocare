@@ -1,7 +1,7 @@
 <x-public-layout
     :title="$story->name"
     :breadcrumbs="[
-        ['label' => 'Client stories', 'url' => route('stories.index')],
+        ['label' => __('Client stories'), 'url' => route('stories.index')],
         ['label' => $story->name],
     ]"
 >
@@ -13,7 +13,7 @@
         @endif
         <blockquote class="mt-8 border-l-4 border-orange pl-5 font-serif text-2xl text-navy">“{{ $story->feedback }}”</blockquote>
         <div class="mt-10">
-            <x-button variant="secondary" :href="route('stories.index')">All stories</x-button>
+            <x-button variant="secondary" :href="route('stories.index')">{{ __('All stories') }}</x-button>
         </div>
     </section>
 </x-public-layout>

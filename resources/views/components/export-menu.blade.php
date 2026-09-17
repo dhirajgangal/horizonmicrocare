@@ -9,8 +9,11 @@
     ], fn ($value) => $value !== null && $value !== '');
 @endphp
 
-<div class="relative" x-data="{ open: false }">
-    <x-icon-button icon="arrow-down-tray" :tooltip="__('Export')" @click="open = ! open" />
+<div {{ $attributes->class('relative') }} x-data="{ open: false }">
+    <x-button variant="secondary" class="gap-2" @click="open = ! open">
+        <x-ui-icon name="arrow-down-tray" class="h-4 w-4" />
+        {{ __('Export') }}
+    </x-button>
     <div
         x-show="open"
         x-cloak
@@ -23,7 +26,7 @@
                 class="flex items-center gap-2 px-3 py-2.5 text-sm font-semibold text-navy hover:bg-paper"
             >
                 <x-ui-icon name="document-arrow-down" class="h-4 w-4 text-orange" />
-                {{ $label }}
+                {{ __($label) }}
             </a>
         @endforeach
     </div>

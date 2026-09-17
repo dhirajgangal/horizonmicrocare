@@ -19,6 +19,6 @@ class Show extends AdminComponent
 
     public function render(): View
     {
-        return $this->page('livewire.admin.loan-applications.show', 'View application');
+        return $this->page('livewire.admin.loan-applications.show', __('View application'));
     }
 }

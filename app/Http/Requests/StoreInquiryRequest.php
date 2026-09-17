@@ -33,7 +33,22 @@ class StoreInquiryRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'consent.accepted' => 'Please confirm that we may contact you and that this enquiry does not guarantee a loan.',
+            'consent.accepted' => __('Please confirm that we may contact you and that this enquiry does not guarantee a loan.'),
+        ];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function attributes(): array
+    {
+        return [
+            'name' => __('Name'),
+            'email' => __('Email'),
+            'mobile' => __('Mobile'),
+            'subject' => __('Subject'),
+            'message' => __('Message'),
+            'consent' => __('Consent'),
         ];
     }
 

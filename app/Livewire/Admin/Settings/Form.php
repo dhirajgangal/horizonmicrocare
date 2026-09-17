@@ -121,6 +121,6 @@ class Form extends AdminComponent
 
     public function render(): View
     {
-        return $this->page('livewire.admin.settings.form', 'Settings');
+        return $this->page('livewire.admin.settings.form', __('Settings'));
     }
 }

@@ -12,10 +12,10 @@ enum InquiryStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::New => 'New',
-            self::InProgress => 'In progress',
-            self::Resolved => 'Resolved',
-            self::Closed => 'Closed',
+            self::New => __('New'),
+            self::InProgress => __('In progress'),
+            self::Resolved => __('Resolved'),
+            self::Closed => __('Closed'),
         };
     }
 

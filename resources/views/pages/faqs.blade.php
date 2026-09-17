@@ -1,10 +1,10 @@
 <x-public-layout
-    title="FAQs"
-    :breadcrumbs="[['label' => 'FAQs']]"
+    :title="__('FAQs')"
+    :breadcrumbs="[['label' => __('FAQs')]]"
 >
     <section class="bg-navy py-16 text-white">
         <div class="mx-auto max-w-7xl px-4 md:px-6">
-            <h1 class="font-serif text-4xl md:text-5xl">Frequently asked questions</h1>
+            <h1 class="font-serif text-4xl md:text-5xl">{{ __('Frequently asked questions') }}</h1>
         </div>
     </section>
     <section class="mx-auto max-w-4xl px-4 py-16 md:px-6">
@@ -14,7 +14,7 @@
                     <button type="button" class="flex w-full items-center justify-between px-5 py-4 text-left font-semibold" @click="open = open === {{ $index }} ? null : {{ $index }}">
                         <span>
                             @if ($faq->category)
-                                <span class="mb-1 block text-xs uppercase tracking-[0.16em] text-orange">{{ $faq->category }}</span>
+                                <span class="mb-1 block text-xs text-orange">{{ $faq->category }}</span>
                             @endif
                             {{ $faq->question }}
                         </span>

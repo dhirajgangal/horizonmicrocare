@@ -52,6 +52,6 @@ class Form extends AdminComponent
 
     public function render(): View
     {
-        return $this->page('livewire.admin.users.form', $this->userId ? 'Edit user' : 'Create user');
+        return $this->page('livewire.admin.users.form', $this->userId ? __('Edit user') : __('Create user'));
     }
 }

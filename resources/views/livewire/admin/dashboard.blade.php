@@ -1,15 +1,19 @@
 <div class="space-y-8">
     <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         @foreach ([
-            ['label' => __('Loan products'), 'value' => $productCount, 'href' => route('admin.loan-products.index')],
-            ['label' => __('Applications'), 'value' => array_sum($applicationCounts), 'href' => route('admin.loan-applications.index')],
-            ['label' => __('Inquiries'), 'value' => $inquiryCount, 'href' => route('admin.inquiries.index')],
-            ['label' => __('Stories'), 'value' => $storyCount, 'href' => route('admin.client-stories.index')],
-            ['label' => __('Gallery'), 'value' => $galleryCount, 'href' => route('admin.gallery.index')],
+            ['label' => __('Loan products'), 'value' => $productCount, 'href' => route('admin.loan-products.index'), 'icon' => 'banknotes'],
+            ['label' => __('Applications'), 'value' => array_sum($applicationCounts), 'href' => route('admin.loan-applications.index'), 'icon' => 'clipboard-document-list'],
+            ['label' => __('Inquiries'), 'value' => $inquiryCount, 'href' => route('admin.inquiries.index'), 'icon' => 'envelope'],
+            ['label' => __('Stories'), 'value' => $storyCount, 'href' => route('admin.client-stories.index'), 'icon' => 'chat-bubble-left-right'],
+            ['label' => __('Gallery'), 'value' => $galleryCount, 'href' => route('admin.gallery.index'), 'icon' => 'photo'],
         ] as $stat)
-            <a href="{{ $stat['href'] }}" class="rounded-xl border border-border bg-white p-5 shadow-sm transition hover:border-orange">
-                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-text-2">{{ $stat['label'] }}</p>
-                <p class="mt-2 font-serif text-3xl text-navy">{{ $stat['value'] }}</p>
+            <a href="{{ $stat['href'] }}" class="stat-card">
+                <span class="stat-card-icon">
+                    <x-ui-icon :name="$stat['icon']" class="h-5 w-5" />
+                </span>
+                <p class="stat-card-label">{{ $stat['label'] }}</p>
+                <p class="stat-card-value">{{ $stat['value'] }}</p>
+                <p class="stat-card-hint">{{ __('View list') }}</p>
             </a>
         @endforeach
     </div>
@@ -90,17 +94,20 @@
         </div>
     </x-card>
 
-    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-6">
         @foreach ($applicationCounts as $status => $count)
-            <x-card>
-                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-text-2">{{ \App\Enums\ApplicationStatus::from($status)->label() }}</p>
-                <p class="mt-2 font-serif text-2xl text-navy">{{ $count }}</p>
-            </x-card>
+            @php
+                $statusEnum = \App\Enums\ApplicationStatus::from($status);
+            @endphp
+            <div class="status-card is-{{ $statusEnum->tone() }}">
+                <p class="status-card-label">{{ $statusEnum->label() }}</p>
+                <p class="status-card-value">{{ $count }}</p>
+            </div>
         @endforeach
-        <x-card>
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-text-2">{{ __('New inquiries') }}</p>
-            <p class="mt-2 font-serif text-2xl text-navy">{{ $newInquiries }}</p>
-        </x-card>
+        <div class="status-card is-info">
+            <p class="status-card-label">{{ __('New inquiries') }}</p>
+            <p class="status-card-value">{{ $newInquiries }}</p>
+        </div>
     </div>
 
     <div class="grid gap-6 lg:grid-cols-2">

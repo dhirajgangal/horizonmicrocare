@@ -1,17 +1,19 @@
 <div>
-    <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
-        <x-section-heading :title="__('Loan applications')" description="These are information requests. Status changes here do not mean a loan has been granted by this website." />
-        <x-export-menu module="loan-applications" :search="$search" :sort-field="$sortField" :sort-direction="$sortDirection" :status="$status" />
+    <div class="mb-6">
+        <x-section-heading :title="__('Loan applications')" :description="__('These are information requests. Status changes here do not mean a loan has been granted by this website.')" />
     </div>
     <x-card :padding="false">
-        <div class="flex flex-wrap gap-3 border-b border-border p-4">
-            <input wire:model.live.debounce.300ms="search" type="search" placeholder="{{ __('Search') }}" class="w-full max-w-sm rounded-btn border border-border px-3 py-2.5 text-sm">
-            <select wire:model.live="status" class="rounded-btn border border-border px-3 py-2.5 text-sm">
-                <option value="">{{ __('All statuses') }}</option>
-                @foreach ($statuses as $statusOption)
-                    <option value="{{ $statusOption->value }}">{{ $statusOption->label() }}</option>
-                @endforeach
-            </select>
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-border p-4">
+            <div class="flex flex-wrap items-center gap-3">
+                <input wire:model.live.debounce.300ms="search" type="search" placeholder="{{ __('Search') }}" class="w-full max-w-sm rounded-btn border border-border px-3 py-2.5 text-sm">
+                <select wire:model.live="status" class="rounded-btn border border-border px-3 py-2.5 text-sm">
+                    <option value="">{{ __('All statuses') }}</option>
+                    @foreach ($statuses as $statusOption)
+                        <option value="{{ $statusOption->value }}">{{ $statusOption->label() }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <x-export-menu module="loan-applications" :search="$search" :sort-field="$sortField" :sort-direction="$sortDirection" :status="$status" />
         </div>
         <div class="overflow-x-auto">
             <table class="min-w-full text-left text-sm">
@@ -50,7 +52,7 @@
         </div>
         <div class="border-t border-border px-4 py-3">{{ $applications->links() }}</div>
     </x-card>
-    <x-confirm-modal wire:model.live="confirmingDeletion" :title="__('Archive')" body="The record will be archived and hidden from this list." :confirm-text="__('Archive')" />
+    <x-confirm-modal wire:model.live="confirmingDeletion" :title="__('Archive')" :body="__('The record will be archived and hidden from this list.')" :confirm-text="__('Archive')" />
 
     @if ($modal === 'edit' && $modalRecord)
         <x-admin-modal :title="__('Edit')" :open="true" size="xl">

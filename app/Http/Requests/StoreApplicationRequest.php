@@ -45,8 +45,33 @@ class StoreApplicationRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'consent.accepted' => 'Please confirm that we may contact you and that this form does not guarantee a loan.',
-            'date_of_birth.before' => 'Applicants must be at least 18 years old.',
+            'consent.accepted' => __('Please confirm that we may contact you and that this form does not guarantee a loan.'),
+            'date_of_birth.before' => __('Applicants must be at least 18 years old.'),
+        ];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function attributes(): array
+    {
+        return [
+            'loan_product_id' => __('Loan product'),
+            'requested_amount' => __('Requested amount (₹)'),
+            'purpose' => __('Purpose of loan'),
+            'full_name' => __('Full name'),
+            'mobile' => __('Mobile'),
+            'email' => __('Email'),
+            'gender' => __('Gender'),
+            'date_of_birth' => __('Date of birth'),
+            'state' => __('State'),
+            'district' => __('District'),
+            'pincode' => __('Pincode'),
+            'address' => __('Address'),
+            'occupation' => __('Occupation / livelihood'),
+            'monthly_income' => __('Monthly income (optional)'),
+            'marital_status' => __('Marital status (optional)'),
+            'consent' => __('Consent'),
         ];
     }
 

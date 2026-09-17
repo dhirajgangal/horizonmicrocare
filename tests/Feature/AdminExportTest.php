@@ -31,6 +31,30 @@ class AdminExportTest extends TestCase
         $this->assertStringContainsString('Village Livelihood Loan', $response->streamedContent());
     }
 
+    public function test_admin_index_pages_show_a_labeled_export_button(): void
+    {
+        $this->siteSettings();
+        $this->actingAs($this->superAdmin());
+
+        $pages = [
+            'loan-applications' => route('admin.loan-applications.index'),
+            'inquiries' => route('admin.inquiries.index'),
+            'users' => route('admin.users.index'),
+            'loan-products' => route('admin.loan-products.index'),
+            'faqs' => route('admin.faqs.index'),
+            'gallery' => route('admin.gallery.index'),
+            'home-slides' => route('admin.home-slides.index'),
+            'client-stories' => route('admin.client-stories.index'),
+        ];
+
+        foreach ($pages as $module => $url) {
+            $this->get($url)
+                ->assertOk()
+                ->assertSee(__('Export'))
+                ->assertSee(route('admin.export', ['module' => $module, 'format' => 'csv'], false), false);
+        }
+    }
+
     public function test_csv_export_respects_the_current_search_filter(): void
     {
         $this->siteSettings();

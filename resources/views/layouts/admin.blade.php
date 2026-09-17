@@ -36,7 +36,7 @@
                         x-on:click="toggle()"
                     />
                     <div class="min-w-0">
-                        <p class="text-[11px] uppercase tracking-[0.16em] text-text-2">{{ __('Super Admin') }}</p>
+                        <p class="locale-caps text-[11px] text-text-2">{{ __('Super Admin') }}</p>
                         <p class="truncate text-sm font-semibold text-navy">{{ $title }}</p>
                     </div>
                 </div>

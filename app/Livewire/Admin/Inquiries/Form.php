@@ -40,6 +40,6 @@ class Form extends AdminComponent
 
     public function render(): View
     {
-        return $this->page('livewire.admin.inquiries.form', 'Update enquiry');
+        return $this->page('livewire.admin.inquiries.form', __('Update enquiry'));
     }
 }

@@ -58,6 +58,6 @@ class Form extends AdminComponent
 
     public function render(): View
     {
-        return $this->page('livewire.admin.faqs.form', $this->faqId ? 'Edit FAQ' : 'Create FAQ');
+        return $this->page('livewire.admin.faqs.form', $this->faqId ? __('Edit FAQ') : __('Create FAQ'));
     }
 }

@@ -79,6 +79,6 @@ class Form extends AdminComponent
 
     public function render(): View
     {
-        return $this->page('livewire.admin.home-slides.form', $this->slideId ? 'Edit slide' : 'Create slide');
+        return $this->page('livewire.admin.home-slides.form', $this->slideId ? __('Edit slide') : __('Create slide'));
     }
 }

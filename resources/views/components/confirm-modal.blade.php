@@ -1,9 +1,15 @@
 @props([
-    'title' => 'Delete this record?',
-    'body' => 'This action cannot be undone.',
-    'confirmText' => 'Delete',
+    'title' => null,
+    'body' => null,
+    'confirmText' => null,
     'confirmMethod' => 'deleteConfirmed',
 ])
+
+@php
+    $title = $title ?? __('Delete this record?');
+    $body = $body ?? __('This action cannot be undone.');
+    $confirmText = $confirmText ?? __('Delete');
+@endphp
 
 <div
     x-data="{ open: false }"

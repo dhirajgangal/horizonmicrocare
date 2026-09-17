@@ -19,8 +19,8 @@ class PageController extends Controller
     public function privacy(): View
     {
         return view('pages.legal', [
-            'title' => 'Privacy Policy',
-            'heading' => 'Privacy Policy',
+            'title' => __('Privacy policy'),
+            'heading' => __('Privacy policy'),
             'partial' => 'pages.legal.privacy',
         ]);
     }
@@ -28,8 +28,8 @@ class PageController extends Controller
     public function terms(): View
     {
         return view('pages.legal', [
-            'title' => 'Terms of Use',
-            'heading' => 'Terms of Use',
+            'title' => __('Terms of use'),
+            'heading' => __('Terms of use'),
             'partial' => 'pages.legal.terms',
         ]);
     }
@@ -37,8 +37,8 @@ class PageController extends Controller
     public function disclaimer(): View
     {
         return view('pages.legal', [
-            'title' => 'Disclaimer',
-            'heading' => 'Disclaimer',
+            'title' => __('Disclaimer'),
+            'heading' => __('Disclaimer'),
             'partial' => 'pages.legal.disclaimer',
         ]);
     }
@@ -46,8 +46,8 @@ class PageController extends Controller
     public function responsibleLending(): View
     {
         return view('pages.legal', [
-            'title' => 'Responsible Lending',
-            'heading' => 'Responsible Lending',
+            'title' => __('Responsible lending'),
+            'heading' => __('Responsible lending'),
             'partial' => 'pages.legal.responsible-lending',
         ]);
     }

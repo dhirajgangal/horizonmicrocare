@@ -1,14 +1,12 @@
 <div>
     <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
-        <x-section-heading :title="__('FAQs')" description="Featured FAQs appear on the homepage." />
-        <div class="flex items-center gap-2">
-            <x-export-menu module="faqs" :search="$search" :sort-field="$sortField" :sort-direction="$sortDirection" />
-            <x-button wire:click="openCreate">{{ __('Add FAQ') }}</x-button>
-        </div>
+        <x-section-heading :title="__('FAQs')" :description="__('Featured FAQs appear on the homepage.')" />
+        <x-button wire:click="openCreate">{{ __('Add FAQ') }}</x-button>
     </div>
     <x-card :padding="false">
-        <div class="border-b border-border p-4">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-border p-4">
             <input wire:model.live.debounce.300ms="search" type="search" placeholder="{{ __('Search') }}" class="w-full max-w-sm rounded-btn border border-border px-3 py-2.5 text-sm">
+            <x-export-menu module="faqs" :search="$search" :sort-field="$sortField" :sort-direction="$sortDirection" />
         </div>
         <div class="overflow-x-auto">
             <table class="min-w-full text-left text-sm">

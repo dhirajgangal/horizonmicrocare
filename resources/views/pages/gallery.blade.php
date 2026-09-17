@@ -1,12 +1,12 @@
 <x-public-layout
-    title="Gallery"
+    :title="__('Gallery')"
     :lightbox="true"
-    :breadcrumbs="[['label' => 'Gallery']]"
+    :breadcrumbs="[['label' => __('Gallery')]]"
 >
     <section class="bg-navy py-16 text-white">
         <div class="mx-auto max-w-7xl px-4 md:px-6">
-            <h1 class="font-serif text-4xl md:text-5xl">Gallery</h1>
-            <p class="mt-4 max-w-2xl text-white/75">Field photographs and community moments. Click any image to view it larger.</p>
+            <h1 class="font-serif text-4xl md:text-5xl">{{ __('Gallery') }}</h1>
+            <p class="mt-4 max-w-2xl text-white/75">{{ __('Field photographs and community moments. Click any image to view it larger.') }}</p>
         </div>
     </section>
     <section class="mx-auto max-w-7xl px-4 py-16 md:px-6">

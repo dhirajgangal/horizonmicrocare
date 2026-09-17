@@ -70,6 +70,6 @@ class Form extends AdminComponent
 
     public function render(): View
     {
-        return $this->page('livewire.admin.loan-products.form', $this->productId ? 'Edit product' : 'Create product');
+        return $this->page('livewire.admin.loan-products.form', $this->productId ? __('Edit product') : __('Create product'));
     }
 }

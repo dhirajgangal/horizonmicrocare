@@ -9,7 +9,7 @@
                         <p class="mt-1 text-sm text-text-2">{{ $story->location }}</p>
                     @endif
                     <blockquote class="mt-4 border-l-4 border-orange pl-4 text-text-2 italic">“{{ \Illuminate\Support\Str::limit($story->feedback, 180) }}”</blockquote>
-                    <x-button variant="ghost" class="mt-4 px-0" :href="route('stories.show', $story)">Read story</x-button>
+                    <x-button variant="ghost" class="mt-4 px-0" :href="route('stories.show', $story)">{{ __('Read story') }}</x-button>
                 </div>
             </article>
         @endforeach
@@ -17,7 +17,7 @@
 
     @if ($hasMore)
         <div class="mt-10 text-center">
-            <x-button type="button" wire:click="loadMore">Load more</x-button>
+            <x-button type="button" wire:click="loadMore">{{ __('Load more') }}</x-button>
         </div>
     @endif
 </div>

@@ -62,6 +62,6 @@ class Form extends AdminComponent
 
     public function render(): View
     {
-        return $this->page('livewire.admin.gallery-images.form', $this->imageId ? 'Edit image' : 'Create image');
+        return $this->page('livewire.admin.gallery-images.form', $this->imageId ? __('Edit image') : __('Create image'));
     }
 }

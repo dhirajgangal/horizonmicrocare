@@ -264,6 +264,129 @@
     }
 }
 
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    border: 1px solid #e4e0da;
+    background: #ffffff;
+    padding: 1.25rem;
+    box-shadow: 0 1px 2px rgba(11, 31, 74, 0.04);
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.stat-card:hover {
+    border-color: #f15a24;
+    box-shadow: 0 10px 24px rgba(11, 31, 74, 0.08);
+    transform: translateY(-2px);
+}
+
+.stat-card-icon {
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    background: rgba(11, 31, 74, 0.08);
+    color: #0b1f4a;
+    transition: background-color 180ms ease, color 180ms ease;
+}
+
+.stat-card:hover .stat-card-icon {
+    background: rgba(241, 90, 36, 0.12);
+    color: #f15a24;
+}
+
+.stat-card-label {
+    margin-top: 1rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #5c6570;
+}
+
+.stat-card-value {
+    margin-top: 0.25rem;
+    font-family: 'Source Serif 4', ui-serif, Georgia, serif;
+    font-size: 1.875rem;
+    line-height: 1.15;
+    color: #0b1f4a;
+}
+
+.stat-card-hint {
+    margin-top: auto;
+    padding-top: 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #f15a24;
+}
+
+.status-card {
+    border-radius: 0.5rem;
+    border: 1px solid #e4e0da;
+    border-left-width: 4px;
+    background: #ffffff;
+    padding: 1.1rem 1.15rem;
+}
+
+.status-card.is-info {
+    border-left-color: #0b1f4a;
+}
+
+.status-card.is-warning {
+    border-left-color: #c47b17;
+}
+
+.status-card.is-success {
+    border-left-color: #f15a24;
+}
+
+.status-card.is-danger {
+    border-left-color: #b42318;
+}
+
+.status-card.is-muted {
+    border-left-color: #5c6570;
+}
+
+.status-card-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #5c6570;
+}
+
+.status-card-value {
+    margin-top: 0.35rem;
+    font-family: 'Source Serif 4', ui-serif, Georgia, serif;
+    font-size: 1.5rem;
+    color: #0b1f4a;
+}
+
+.eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #f15a24;
+}
+
+html[lang="en"] .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+}
+
+.field-kicker {
+    font-size: 0.75rem;
+    color: #5c6570;
+}
+
+html[lang="en"] .field-kicker {
+    text-transform: uppercase;
+}
+
+html[lang="en"] .locale-caps {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+}
+
 .public-footer-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);

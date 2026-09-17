@@ -1,4 +1,4 @@
-<footer class="mt-16 bg-navy text-white">
+<footer class="mt-5 bg-navy text-white">
     <div class="public-footer-grid mx-auto max-w-7xl px-4 py-14 md:px-6">
         <div class="min-w-0">
             <a
@@ -12,13 +12,13 @@
                 >
             </a>
             <p class="mt-5 max-w-sm text-sm leading-relaxed text-white/75">
-                Horizonion Microcare Association helps women explore livelihood and self-empowerment loan options. Submitting a form never guarantees a loan, rate, or approval.
+                {{ __('Horizonion Microcare Association helps women explore livelihood and self-empowerment loan options. Submitting a form never guarantees a loan, rate, or approval.') }}
             </p>
             <p class="mt-3 text-sm font-semibold text-orange">{{ $site->tagline }}</p>
         </div>
 
         <div class="min-w-0">
-            <h3 class="text-sm font-semibold uppercase tracking-[0.16em] text-orange">{{ __('Offerings') }}</h3>
+            <h3 class="eyebrow text-sm">{{ __('Offerings') }}</h3>
             <ul class="mt-4 space-y-2 text-sm text-white/80">
                 <li><a class="hover:text-white" href="{{ route('offerings.index') }}">{{ __('Our offerings') }}</a></li>
                 <li><a class="hover:text-white" href="{{ route('apply') }}">{{ __('Apply for a loan') }}</a></li>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="min-w-0">
-            <h3 class="text-sm font-semibold uppercase tracking-[0.16em] text-orange">{{ __('Support') }}</h3>
+            <h3 class="eyebrow text-sm">{{ __('Support') }}</h3>
             <ul class="mt-4 space-y-2 text-sm text-white/80">
                 <li><a class="hover:text-white" href="{{ route('faqs') }}">{{ __('FAQs') }}</a></li>
                 <li><a class="hover:text-white" href="{{ route('contact') }}">{{ __('Contact us') }}</a></li>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="min-w-0">
-            <h3 class="text-sm font-semibold uppercase tracking-[0.16em] text-orange">{{ __('Legal') }}</h3>
+            <h3 class="eyebrow text-sm">{{ __('Legal') }}</h3>
             <ul class="mt-4 space-y-2 text-sm text-white/80">
                 <li><a class="hover:text-white" href="{{ route('privacy') }}">{{ __('Privacy policy') }}</a></li>
                 <li><a class="hover:text-white" href="{{ route('terms') }}">{{ __('Terms') }}</a></li>
