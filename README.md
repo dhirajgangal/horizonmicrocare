@@ -1,58 +1,150 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Horizonion Microcare
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Website and Super Admin for **Horizonion Microcare Association**, a women-focused financial inclusion initiative. The public site publishes responsible loan information. The Super Admin manages that content, loan products, applications, and customer enquiries.
 
-## About Laravel
+Submitting an enquiry or application **does not guarantee a loan**. Approval is decided by the organization, not by the website.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## What is included
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Public website
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The public site is a branded marketing and information site (`/` through legal pages).
 
-## Learning Laravel
+| Area | Status |
+| --- | --- |
+| Home, about, mission, contact, gallery | Live pages. About and mission are static. Gallery shows **active** images from Super Admin. Contact details come from Settings. |
+| Offerings, how it works, eligibility, stories, FAQs, apply, track, grievance, careers, news, resources, legal | Routes are reserved. Most still show Phase 1 placeholders until CMS content is wired through. |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Public URLs include `/about-us`, `/loans`, `/gallery`, `/apply-loan`, `/track-application`, `/contact-us`, `/privacy-policy`, and `/terms`.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Super Admin (`/admin`)
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+Filament panel for staff. Orange accent on primary actions and selected navigation; navy sidebar.
 
-## Agentic Development
+**Dashboard**
+- Live counts for products, applications, inquiries, and stories
+- Charts for application status, monthly volume, and product mix
+- Tabbed recent applications, inquiries, and products
+- Quick actions
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+**Loan management**
+- Loan products with features, eligibility, required documents, and product FAQs
+- Loan applications (New, Under Review, Approved, Rejected, Archived)
+- Internal notes and private application documents
+- Soft-delete archive for applications
+
+**Website content**
+- Home slides, statistics, sections, Why Choose Us, How It Works
+- CMS pages and legal copy (About Us and Our Mission are static public pages, not CMS records)
+- Leadership profiles
+- Client stories
+- Gallery categories and images (public disk, `/storage` URLs)
+- Site-wide FAQs
+
+**Customer management**
+- Inquiries with status, notes, and export
+- Application reports and CSV export
+
+**Website settings**
+- Organization name, logos, contact, social, SEO, consent text
+- Header and footer navigation items
+
+**Administration**
+- Admin users and roles
+- Activity log
+- Reports
+
+View and edit screens that have related records (applications, products, inquiries) use a single card with **Details** plus relation tabs.
+
+## Roles
+
+| Role | Access |
+| --- | --- |
+| Super Admin | Full access |
+| Content Manager | CMS, navigation, stories, gallery, FAQs, leadership, view loans |
+| Loan Manager | Loan products, applications, stories |
+| Customer Support | Applications, inquiries, FAQs |
+| Viewer | Dashboard plus read-only loans, applications, inquiries, and activity |
+
+Inactive users cannot sign in.
+
+## Tech stack
+
+- PHP 8.3+ / Laravel 13
+- Filament 4 and Livewire 3
+- Spatie Permission and Activity Log
+- Tailwind CSS 4, Alpine.js, Vite
+- SQLite by default (`.env.example`); MySQL is also supported
+
+Brand tokens live in `config/brand.php` (navy `#0B1F4A`, orange `#F15A24`).
+
+## Local setup
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+composer setup
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+That installs PHP and JS dependencies, copies `.env` if needed, generates the app key, runs migrations, and builds frontend assets.
 
-## Contributing
+Or step by step:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+cp .env.example .env
+composer install
+php artisan key:generate
+php artisan migrate
+php artisan storage:link
+npm install
+npm run build
+php artisan db:seed
+```
 
-## Code of Conduct
+`storage:link` is required so logos and gallery images are reachable at `/storage/...`.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Run the app
 
-## Security Vulnerabilities
+With Laravel Herd, open `http://horizonmicrocare.test`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Or:
 
-## License
+```bash
+composer run dev
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Then visit `APP_URL` from `.env` (default `http://localhost:8000`).
+
+Admin: `{APP_URL}/admin`
+
+## Seeded accounts
+
+`php artisan db:seed` loads roles, settings, CMS placeholders, and dummy records for every admin module.
+
+| Role | Email | Password |
+| --- | --- | --- |
+| Super Admin | `admin@horizonmicrocare.test` | `password` |
+| Content Manager | `content@horizonmicrocare.test` | `password` |
+| Loan Manager | `loans@horizonmicrocare.test` | `password` |
+| Customer Support | `support@horizonmicrocare.test` | `password` |
+| Viewer | `viewer@horizonmicrocare.test` | `password` |
+
+Dummy amounts, stories, and statistics are for Super Admin review only. They are not public offers.
+
+## Tests
+
+```bash
+php artisan test
+```
+
+PHPUnit feature tests cover public pages, admin access, loan/gallery CRUD, and seeders.
+
+## Project layout
+
+```
+app/Filament/          Super Admin resources, pages, widgets
+app/Http/Controllers/  Public home and content routes
+app/Models/            Loans, applications, inquiries, CMS, gallery
+app/Services/          Site settings
+resources/views/       Public Blade pages and Filament custom views
+public/css/            Admin theme and shared alert styles
+database/seeders/      Roles, settings, CMS, dummy data
+```

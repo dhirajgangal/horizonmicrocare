@@ -14,6 +14,10 @@
         "vite": "^8.0.0"
     },
     "optionalDependencies": {
-        "@laravel/multiplex": "^0.4.1"
+        "@laravel/multiplex": "^0.4.1",
+        "@rolldown/binding-darwin-arm64": "^1.2.9"
+    },
+    "dependencies": {
+        "alpinejs": "^3.17.3"
     }
 }

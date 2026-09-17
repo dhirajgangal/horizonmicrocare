@@ -2,8 +2,78 @@
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+:root {
+    --primary: #0b1f4a;
+    --primary-dark: #061433;
+    --primary-light: #1e3a6e;
+    --secondary: #f15a24;
+    --accent: #f15a24;
+    --background: #f7f5f2;
+    --surface: #ffffff;
+    --text-primary: #0b1f4a;
+    --text-secondary: #5c6570;
+    --border: #e4e0da;
+    --success: #2f6f4e;
+    --warning: #c47b17;
+    --danger: #b42318;
+    --accent-hover: #d94c1a;
+}
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    --font-serif: 'Source Serif 4', ui-serif, Georgia, 'Times New Roman', serif;
+    --color-primary: var(--primary);
+    --color-primary-dark: var(--primary-dark);
+    --color-primary-light: var(--primary-light);
+    --color-secondary: var(--secondary);
+    --color-accent: var(--accent);
+    --color-background: var(--background);
+    --color-surface: var(--surface);
+    --color-text-primary: var(--text-primary);
+    --color-text-secondary: var(--text-secondary);
+    --color-border: var(--border);
+    --color-success: var(--success);
+    --color-warning: var(--warning);
+    --color-danger: var(--danger);
+    --color-accent-hover: var(--accent-hover);
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-background font-sans text-text-primary antialiased;
+    }
+
+    :focus-visible {
+        @apply outline-2 outline-offset-2 outline-accent;
+    }
+
+    h1,
+    h2,
+    h3,
+    .font-display {
+        @apply font-serif tracking-tight;
+    }
+}
+
+@utility container-site {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 72rem;
+    padding-inline: 1.25rem;
+}
+
+@media (min-width: 64rem) {
+    .container-site {
+        padding-inline: 2rem;
+    }
 }

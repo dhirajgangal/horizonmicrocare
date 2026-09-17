@@ -1,0 +1,445 @@
+@import url("theme-alerts.css");
+
+:root {
+    --primary: #0b1f4a;
+    --primary-dark: #061433;
+    --primary-light: #1e3a6e;
+    --secondary: #f15a24;
+    --accent: #f15a24;
+    --accent-hover: #d94c1a;
+    --background: #f7f5f2;
+    --surface: #ffffff;
+    --text-primary: #0b1f4a;
+    --text-secondary: #5c6570;
+    --border: #e4e0da;
+    --success: #2f6f4e;
+    --warning: #c47b17;
+    --danger: #b42318;
+}
+
+.fi-body,
+.fi-main,
+.fi-main-ctn,
+.fi-sidebar {
+    --body-bg: var(--background);
+}
+
+.fi-sidebar {
+    background: var(--primary-dark) !important;
+}
+
+.fi-sidebar-header {
+    background: var(--primary-dark) !important;
+    border-bottom-color: rgb(255 255 255 / 0.08) !important;
+}
+
+.fi-sidebar-nav-group-label,
+.fi-sidebar-item-label,
+.fi-sidebar-item-btn,
+.fi-sidebar-group-btn {
+    color: rgb(255 255 255 / 0.82) !important;
+}
+
+.fi-sidebar-item-btn,
+.fi-sidebar-item-grouped-btn,
+.fi-sidebar-group-btn {
+    border-radius: 0.6rem !important;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+.fi-sidebar-item-btn:hover,
+.fi-sidebar-item-grouped-btn:hover,
+.fi-sidebar-group-btn:hover {
+    background: rgb(241 90 36 / 0.16) !important;
+    color: #fff !important;
+}
+
+.fi-sidebar-item.fi-active > .fi-sidebar-item-btn,
+.fi-sidebar-item.fi-active > .fi-sidebar-item-grouped-btn,
+.fi-sidebar-item.fi-active > .fi-sidebar-item-btn:hover,
+.fi-sidebar-item.fi-active > .fi-sidebar-item-grouped-btn:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+}
+
+.fi-sidebar-item.fi-active .fi-icon,
+.fi-sidebar-item.fi-active svg {
+    color: #fff !important;
+}
+
+.fi-tabs-item.fi-active,
+.fi-ac-tabs-item.fi-active {
+    color: var(--accent) !important;
+}
+
+.admin-dashboard-tables__card {
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+}
+
+.admin-dashboard-tables .fi-ta-ctn,
+.admin-dashboard-tables .fi-section,
+.admin-dashboard-tables .fi-section-content-ctn {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
+.admin-dashboard-tables__tabs.fi-tabs,
+.admin-dashboard-tables .fi-tabs.fi-contained {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0.85rem 1rem 0;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    box-shadow: none;
+}
+
+.admin-dashboard-tables .fi-tabs-item {
+    border-radius: 0.55rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0.9rem;
+    background: transparent;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+.admin-dashboard-tables .fi-tabs-item:hover:not(.fi-active) {
+    background: rgb(241 90 36 / 0.1);
+}
+
+.admin-dashboard-tables .fi-tabs-item.fi-active {
+    background: var(--accent) !important;
+}
+
+.admin-dashboard-tables .fi-tabs-item.fi-active,
+.admin-dashboard-tables .fi-tabs-item.fi-active .fi-tabs-item-label,
+.admin-dashboard-tables .fi-tabs-item.fi-active > .fi-icon {
+    color: #fff !important;
+}
+
+.admin-dashboard-tables .fi-tabs-item.fi-active .fi-badge {
+    background: #fff !important;
+    color: var(--accent) !important;
+}
+
+.fi-wi-chart .fi-wi-chart-frame {
+    min-height: 20rem;
+}
+
+.fi-topbar {
+    background: var(--surface) !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+
+.fi-btn.fi-color-primary,
+.fi-ac-btn-action.fi-color-primary {
+    background-color: var(--accent) !important;
+    color: #fff !important;
+}
+
+.fi-btn.fi-color-primary:hover,
+.fi-ac-btn-action.fi-color-primary:hover {
+    background-color: var(--accent-hover) !important;
+}
+
+.admin-login {
+    min-height: 100vh;
+    display: grid;
+    background: var(--background);
+}
+
+@media (min-width: 900px) {
+    .admin-login {
+        grid-template-columns: 1.05fr 0.95fr;
+    }
+}
+
+.admin-login__visual {
+    display: none;
+    background:
+        linear-gradient(160deg, rgb(11 31 74 / 0.92), rgb(6 20 51 / 0.96)),
+        var(--primary);
+    color: #fff;
+    padding: 3.5rem;
+    align-content: center;
+}
+
+@media (min-width: 900px) {
+    .admin-login__visual {
+        display: grid;
+        align-content: center;
+    }
+}
+
+.admin-login__visual img {
+    width: min(100%, 22rem);
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+.admin-login__kicker {
+    margin-top: 2rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.admin-login__visual h1 {
+    margin: 0.75rem 0 0;
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.15;
+}
+
+.admin-login__visual p {
+    margin-top: 1rem;
+    max-width: 32rem;
+    color: rgb(255 255 255 / 0.8);
+    line-height: 1.7;
+}
+
+.admin-login__form {
+    display: grid;
+    place-items: center;
+    padding: 2rem 1.25rem;
+}
+
+.admin-login .fi-simple-layout,
+.admin-login .fi-simple-main,
+.admin-login .fi-simple-page {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.admin-login .fi-simple-card,
+.admin-login .fi-simple-page-content {
+    width: min(100%, 28rem);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.75rem;
+    box-shadow: 0 16px 40px rgb(11 31 74 / 0.08);
+}
+
+.fi-sidebar-item-btn:focus-visible,
+.fi-topbar-open-sidebar-btn:focus-visible,
+.fi-icon-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+@media (max-width: 899px) {
+    .admin-login__form {
+        padding: 1.25rem 1rem 2rem;
+    }
+}
+
+.admin-welcome,
+.admin-quick-actions {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.35rem 1.5rem;
+}
+
+.admin-welcome__kicker,
+.admin-quick-actions__intro {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.admin-welcome__kicker {
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.admin-welcome__title,
+.admin-quick-actions__title {
+    margin: 0.35rem 0 0;
+    color: var(--text-primary);
+    font-size: 1.45rem;
+    line-height: 1.25;
+}
+
+.admin-welcome__intro {
+    margin: 0.55rem 0 0;
+    max-width: 42rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.admin-quick-actions {
+    display: grid;
+    gap: 1rem;
+}
+
+.admin-quick-actions__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.admin-quick-actions__button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0.5rem 0.95rem;
+    border-radius: 0.65rem;
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+    font-weight: 650;
+    text-decoration: none;
+}
+
+.admin-quick-actions__button.is-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.admin-quick-actions__button.is-secondary {
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+.admin-quick-actions__button.is-primary:hover {
+    background: var(--accent-hover);
+}
+
+.admin-quick-actions__button.is-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.fi-resource-edit-record-page .fi-sc-tabs,
+.fi-resource-view-record-page .fi-sc-tabs {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.fi-resource-edit-record-page .fi-sc-tabs > .fi-tabs,
+.fi-resource-view-record-page .fi-sc-tabs > .fi-tabs {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0.85rem 1rem 0;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    box-shadow: none;
+}
+
+.fi-resource-edit-record-page .fi-sc-tabs .fi-tabs-item,
+.fi-resource-view-record-page .fi-sc-tabs .fi-tabs-item {
+    border-radius: 0.55rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0.9rem;
+    background: transparent;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+.fi-resource-edit-record-page .fi-sc-tabs .fi-tabs-item:hover:not(.fi-active),
+.fi-resource-view-record-page .fi-sc-tabs .fi-tabs-item:hover:not(.fi-active) {
+    background: rgb(241 90 36 / 0.1);
+}
+
+.fi-resource-edit-record-page .fi-sc-tabs .fi-tabs-item.fi-active,
+.fi-resource-view-record-page .fi-sc-tabs .fi-tabs-item.fi-active {
+    background: var(--accent) !important;
+}
+
+.fi-resource-edit-record-page .fi-sc-tabs .fi-tabs-item.fi-active,
+.fi-resource-edit-record-page .fi-sc-tabs .fi-tabs-item.fi-active .fi-tabs-item-label,
+.fi-resource-edit-record-page .fi-sc-tabs .fi-tabs-item.fi-active > .fi-icon,
+.fi-resource-view-record-page .fi-sc-tabs .fi-tabs-item.fi-active,
+.fi-resource-view-record-page .fi-sc-tabs .fi-tabs-item.fi-active .fi-tabs-item-label,
+.fi-resource-view-record-page .fi-sc-tabs .fi-tabs-item.fi-active > .fi-icon {
+    color: #fff !important;
+}
+
+.fi-resource-edit-record-page .fi-sc-tabs .fi-sc-tabs-tab.fi-active,
+.fi-resource-view-record-page .fi-sc-tabs .fi-sc-tabs-tab.fi-active {
+    margin-top: 0;
+    padding: 1rem 1.15rem 1.15rem;
+}
+
+.fi-resource-edit-record-page .fi-sc-tabs .fi-section,
+.fi-resource-edit-record-page .fi-sc-tabs .fi-section-content-ctn,
+.fi-resource-edit-record-page .fi-sc-tabs .fi-ta-ctn,
+.fi-resource-view-record-page .fi-sc-tabs .fi-section,
+.fi-resource-view-record-page .fi-sc-tabs .fi-section-content-ctn,
+.fi-resource-view-record-page .fi-sc-tabs .fi-ta-ctn {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
+.fi-resource-create-record-page .fi-section,
+.fi-resource-edit-record-page .fi-section,
+.fi-resource-view-record-page .fi-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    box-shadow: none;
+}
+
+.fi-resource-create-record-page .fi-section + .fi-section,
+.fi-resource-edit-record-page .fi-sc-tabs .fi-section + .fi-section,
+.fi-resource-view-record-page .fi-sc-tabs .fi-section + .fi-section {
+    margin-top: 1rem;
+}
+
+.fi-in-entry-label {
+    color: var(--text-secondary) !important;
+    font-weight: 650;
+}
+
+.fi-in-entry-content {
+    color: var(--text-primary);
+}
+
+.filepond--root {
+    min-height: 10rem;
+}
+
+.filepond--drop-label {
+    min-height: 10rem;
+    color: var(--text-primary) !important;
+}
+
+.filepond--drop-label label {
+    cursor: pointer;
+    font-weight: 650;
+}
+
+.filepond--panel-root {
+    background-color: rgb(241 90 36 / 0.06) !important;
+    border: 1px dashed rgb(241 90 36 / 0.4);
+}
+
+.filepond--label-action {
+    color: var(--accent) !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+}
+
+@media (max-width: 640px) {
+    .admin-welcome,
+    .admin-quick-actions {
+        padding: 1.1rem;
+    }
+
+    .admin-welcome__title,
+    .admin-quick-actions__title {
+        font-size: 1.2rem;
+    }
+}
