@@ -25,35 +25,33 @@
 @endphp
 
 <aside
-    class="admin-sidebar sticky top-5 flex h-screen shrink-0 flex-col bg-navy text-white"
-    :class="collapsed ? 'w-20' : 'w-64'"
+    class="admin-sidebar sticky top-0 flex h-svh shrink-0 flex-col overflow-hidden bg-navy text-white"
+    :class="collapsed ? 'is-collapsed w-20' : 'w-64'"
 >
-    <div class="shrink-0 bg-navy px-3 pt-4 pb-3 mt-2 mb-2">
-        <a
-            href="{{ route('admin.dashboard') }}"
-            class="flex items-center justify-center rounded-btn bg-white px-2 py-2"
-        >
+    <div class="admin-sidebar-brand">
+        <a href="{{ route('admin.dashboard') }}" class="admin-sidebar-logo">
             <img
                 src="{{ asset('storage/images/logo-square.png') }}"
                 alt=""
-                class="h-8 w-8 object-contain"
+                class="admin-sidebar-logo-mark"
                 x-show="collapsed"
                 x-cloak
             >
             <img
                 src="{{ asset('storage/images/logo-rectangle.png') }}"
                 alt="{{ $site->organization_name }}"
-                class="h-10 w-auto max-w-full object-contain"
+                class="admin-sidebar-logo-wordmark"
                 x-show="! collapsed"
+                x-cloak
             >
         </a>
     </div>
 
-    <nav class="flex-1 space-y-6 overflow-y-auto px-3 pt-2 pb-5">
+    <nav class="admin-sidebar-nav">
         @foreach ($groups as $group => $items)
-            <div>
-                <p class="mt-1 px-2 text-xs font-semibold text-orange/90" x-show="! collapsed">{{ $group }}</p>
-                <ul class="mt-2 space-y-1">
+            <div class="admin-sidebar-group">
+                <p class="admin-sidebar-group-title" x-show="! collapsed" x-cloak>{{ $group }}</p>
+                <ul class="admin-sidebar-list">
                     @foreach ($items as $item)
                         @php
                             $active = request()->routeIs($item['match']);
@@ -61,14 +59,14 @@
                         <li>
                             <a
                                 href="{{ route($item['route']) }}"
+                                title="{{ $item['label'] }}"
                                 @class([
-                                    'flex items-center gap-3 rounded-btn px-2.5 py-2 text-sm font-medium transition',
-                                    'bg-orange font-semibold text-white' => $active,
-                                    'text-white/80 hover:bg-white/10 hover:text-white' => ! $active,
+                                    'admin-sidebar-link',
+                                    'is-active bg-orange' => $active,
                                 ])
                             >
                                 <x-ui-icon :name="$item['icon']" class="h-5 w-5 shrink-0" />
-                                <span x-show="! collapsed" x-cloak>{{ $item['label'] }}</span>
+                                <span class="admin-sidebar-label" x-show="! collapsed" x-cloak>{{ $item['label'] }}</span>
                             </a>
                         </li>
                     @endforeach
